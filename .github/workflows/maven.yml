@@ -1,0 +1,47 @@
+name: Test Automation workflow
+
+on:
+  schedule:
+    - cron: 45 16 * * *
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Running test automation framework with maven
+      run: mvn test -X -Dbrowser="edge" -DisLambdaTest="false" -DisHeadless="false"
+
+    - name: Upload Test Logs
+      if: always()
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: Test logs
+        path: logs/
+
+    - name: Upload Test Reports
+      if: always()
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: Test Reports
+        path: reporter/
+
+    - name: Test Execution Status
+      run: echo "Test Execution Completed"
+
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    - name: Update dependency graph
+      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
