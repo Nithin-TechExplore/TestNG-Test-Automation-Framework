@@ -12,7 +12,7 @@ public class demoTest {
     public static void main(String[] args) {
 
 
-        File propFile=new File(System.getProperty("user.dir")+"\\config\\"+"\\QA.properties");
+        File propFile=new File(System.getProperty("user.dir")+"//config//"+"//QA.properties");
         FileReader fileReader=null;
         try {
             fileReader=new FileReader(propFile);
