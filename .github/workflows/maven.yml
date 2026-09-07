@@ -56,6 +56,7 @@ jobs:
         mkdir -p public/extent-reports
         cp -R reporter/ public/extent-reports/
         cp -R screenshots/ public/extent-reports/screenshots/
+        cp public/extent-reports/reporter/Index.html public/extent-reports/index.html
         ls -l
 
         - name: Deploy
