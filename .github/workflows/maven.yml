@@ -59,13 +59,13 @@ jobs:
         cp public/extent-reports/reporter/Index.html public/extent-reports/index.html
         ls -l
 
-        - name: Deploy
-          if: always()
-          uses: JamesIves/github-pages-deploy-action@v4.8.0
-          with:
-            folder: public/extent-reports
-            token: ${{secrets.PAT}}
-            clean: true
+    - name: Deploy
+      if: always()
+      uses: JamesIves/github-pages-deploy-action@v4.8.0
+      with:
+        folder: public/extent-reports
+        token: ${{secrets.PAT}}
+        clean: true
 
 
       
