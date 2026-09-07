@@ -100,6 +100,7 @@ public abstract class BrowserUtility {
         String path = "./screenshots/" + name + "-" + timeStamp + ".png";
         File screenshotFile = new File(path);
         try {
+            FileUtils.forceMkdirParent(screenshotFile); // ensures ./screenshots/ exists first
             FileUtils.copyFile(screenshotData, screenshotFile);
 
         } catch (IOException e) {
