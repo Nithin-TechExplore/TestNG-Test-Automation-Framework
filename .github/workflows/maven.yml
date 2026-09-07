@@ -54,7 +54,7 @@ jobs:
 
       run: |
         mkdir -p public/extent-reports
-        cp -R reporter/Index.html public/extent-reports/
+        cp -R reporter/ public/extent-reports/
         cp -R screenshots/ public/extent-reports/screenshots/
         ls -l
 
